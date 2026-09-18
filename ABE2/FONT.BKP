@@ -15,7 +15,7 @@ void Font_DrawChar(unsigned char *srf, Canvas *canvas, int x, int y, char c) {
 
     if (!map_inited) {
         int i;
-        char *let = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789[]";
+        char *let = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789";
         for (i = 0; i < 256; i++) font_map[i] = -1;
         for (i = 0; let[i]; i++) {
             font_map[(unsigned char)let[i]] = i;

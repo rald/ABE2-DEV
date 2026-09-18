@@ -10,6 +10,7 @@
 #include "gl2d.h"
 #include "canvas.h"
 #include "font.h"
+
 #include "levels.h"
 
 typedef enum {
@@ -34,7 +35,6 @@ void draw(unsigned char *srf,char level[11][21],Canvas *sprites) {
     }
   }
 }
-
 
 int main(void) {
   bool quit=false;
@@ -114,7 +114,9 @@ int main(void) {
         memset(dbf,0,320*200);
         draw(dbf,levels[currentLevel],sprites);
         sprintf(msg,"LEVEL %4d",currentLevel);
-        Font_DrawText(dbf,font,0,16*11+4,msg);
+        Font_DrawText(dbf,font,0,16*11+2,msg);
+        Font_DrawText(dbf,font,0,16*11+9,"[LEFT ARROW] AND [RIGHT ARROW] TO CHANGE LEVEL");
+        Font_DrawText(dbf,font,0,16*11+16,"[ENTER] TO SELECT [ESC] TO QUIT");
         memcpy(GL2D_VGA,dbf,320*200);
         break;
 
@@ -125,8 +127,11 @@ int main(void) {
           if(key==0) key=getch()+256;
     //      printf("%d\n",key);
           vx=0; vy=0;
+
           switch(key) {
             case 27: quit=true; break;
+            case 13: gameState=GAME_STATE_SELECT; break;
+            case 'R': case 'r': gameState=GAME_STATE_INIT; break;
             case 328: vy=-1; break;
             case 336: vy=+1; break;
             case 331: vx=-1; break;
@@ -239,6 +244,8 @@ int main(void) {
         draw(dbf,level,sprites);
         sprintf(msg,"MOVES %4d GOALS %4d",moves,goals);
         Font_DrawText(dbf,font,0,16*11+4,msg);
+        Font_DrawText(dbf,font,0,16*11+11,"[ARROW KEYS] TO MOVE");
+        Font_DrawText(dbf,font,0,16*11+18,"[ENTER] TO LEVEL SELECTION [ESC] TO QUIT");
         memcpy(GL2D_VGA,dbf,320*200);
 
         if(goals==0) gameState=GAME_STATE_COMPLETE;
@@ -260,6 +267,8 @@ int main(void) {
         draw(dbf,level,sprites);
         sprintf(msg,"MOVES %4d GOALS %4d LEVEL COMPLETE",moves,goals);
         Font_DrawText(dbf,font,0,16*11+4,msg);
+        Font_DrawText(dbf,font,0,16*11+11,"[ENTER] TO GOTO LEVEL SELECTION");
+        Font_DrawText(dbf,font,0,16*11+18,"[ESC] TO QUIT");
         memcpy(GL2D_VGA,dbf,320*200);
         break;
     }
