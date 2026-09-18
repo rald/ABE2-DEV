@@ -10,38 +10,9 @@
 #include "gl2d.h"
 #include "canvas.h"
 #include "font.h"
+#include "levels.h"
 
-char levels[][11][21]={
 
-  {
-    "####################",
-    "#@$.#              #",
-    "#####              #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "####################"
-  },
-
-  {
-    "####################",
-    "#@$.               #",
-    "# *                #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "#                  #",
-    "####################"
-  },
-
-};
 
 typedef enum {
   GAME_STATE_INIT=0,
@@ -88,7 +59,6 @@ int main(void) {
 
   char level[11][21];
   int currentLevel = 0;
-  int numLevels = 2;
 
   char msg[256];
 
@@ -283,6 +253,7 @@ int main(void) {
           key=getch();
           if(key==0) key=getch()+256;
           switch(key) {
+            case 27: quit=true; break;
             case 13: gameState=GAME_STATE_SELECT; break;
           }
         }
