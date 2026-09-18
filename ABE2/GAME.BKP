@@ -283,7 +283,6 @@ int main(void) {
           key=getch();
           if(key==0) key=getch()+256;
           switch(key) {
-            case 27: quit=true; break;
             case 13: gameState=GAME_STATE_SELECT; break;
           }
         }
