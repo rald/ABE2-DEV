@@ -1,0 +1,23 @@
+/* Style sheet for Scott Lindhurst's web pages at
+   http://members.aol.com/SokobanMac/
+*/
+
+/* Stuff in the navigational table */
+p.subSecLink, p.currSubSec {
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	text-align: left;
+}
+
+p.currSubSec {  /* Current subsection */
+	font-weight: bold;
+}
+
+p.secLink {    /* Link to a top-level section of website */
+	font-weight: bold;
+	margin-left: 0pt;
+}
+
+pre.sokFont {   /* Use sokoban font, if it exists */
+	font-family: Sokoban, monospace;
+}

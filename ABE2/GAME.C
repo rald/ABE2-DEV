@@ -244,7 +244,7 @@ int main(void) {
         draw(dbf,level,sprites);
         sprintf(msg,"MOVES %4d GOALS %4d",moves,goals);
         Font_DrawText(dbf,font,0,16*11+4,msg);
-        Font_DrawText(dbf,font,0,16*11+11,"[ARROW KEYS] TO MOVE");
+        Font_DrawText(dbf,font,0,16*11+11,"[ARROW KEYS] TO MOVE [R] TO RESET");
         Font_DrawText(dbf,font,0,16*11+18,"[ENTER] TO LEVEL SELECTION [ESC] TO QUIT");
         memcpy(GL2D_VGA,dbf,320*200);
 
